@@ -149,17 +149,17 @@ table>tbody>tr>td, .table>tfoot>tr>td {
 					<td class="text-center"><strong></strong></td>
 				</tr>
 				<tr>
-					<td><a href="productdisplay" class="btn btn-info"><i
+					<td><a href="<c:url value="productdisplay"/>" class="btn btn-info"><i
 							class="fa fa-angle-left"></i> Continue Shopping</a></td>
 
 					<td colspan="2" class="hidden-xs"></td>
 
-					<td><a href="<c:url value="cart"/>" class="btn btn-warning"> Cart</a></td>
+					<td><a href="<c:url value="/cart"/>" class="btn btn-warning"> Cart</a></td>
 
 					<td class="hidden-xs text-center"><strong>Total:</strong>
 					<td class="total"></td>
 
-					<td><a href="<c:url value="shipment"/>" class="btn btn-success">ship</a> <!--  	<c:if test="${n!=0}">
+					<td><a href="<c:url value="/shipment"/>" class="btn btn-success">ship</a> <!--  	<c:if test="${n!=0}">
 						
 						<td><a href="shipment" id="w3s"
 							class="btn btn-success btn-block">Checkout<i
