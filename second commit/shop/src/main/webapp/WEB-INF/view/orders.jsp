@@ -79,7 +79,7 @@ table>tbody>tr>td, .table>tfoot>tr>td {
 			DashBoard
 		</h3>
 		<h3 align="center" class="panel-title">
-			<span class="glyphicon glyphicon-home"></span><a href="admin">Home</a>
+			<span class="glyphicon glyphicon-home"></span><a href="<c:url value="/admin"/>" >Home</a>
 		</h3>
 		<h3 align="right" class="panel-title">
 			<span class="glyphicon glyphicon-log-out"></span><a href="#">Logout</a>
