@@ -4,20 +4,15 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.moxman.Dao.CartDAO;
 import com.moxman.Dao.OrderDAO;
 import com.moxman.Dao.UserDao;
-import com.moxman.DaoImpl.OrderDAOImpl;
 import com.moxman.model.*;
 
 @Controller
@@ -39,7 +34,7 @@ public class OrdersController {
 		List<Cart> list = cartdao.retrive(email);
 		Cart ncar = list.get(0); //new Cart(); 
 		User user = userdao.getemail(email);
-
+		System.out.println(user);
 		float grandtotal = total;
 
 		Orders norder = new Orders();
@@ -59,9 +54,9 @@ public class OrdersController {
 		orderdao.addorder(norder);
 		//orderdao.reteriveorders(email);
 		List<Orders> list1=orderdao.reteriveorders(email);
-		m.addAttribute("orderitems",list);
-		m.addAttribute("user", user);
-		m.addAttribute("grandtotal", grandtotal);
+//		m.addAttribute("orderitems",list);
+//		m.addAttribute("user", user);
+//		m.addAttribute("grandtotal", grandtotal);
 		m.addAttribute("orderitems", list1);
 
 		return "redirect:/orders";

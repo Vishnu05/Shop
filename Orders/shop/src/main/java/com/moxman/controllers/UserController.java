@@ -1,7 +1,6 @@
 package com.moxman.controllers;
 
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,13 +11,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.moxman.Dao.UserDao;
 import com.moxman.model.Coupons;
-import com.moxman.model.Orders;
 import com.moxman.model.Shipment;
 import com.moxman.model.User;
 
@@ -58,6 +57,7 @@ public class UserController {
 		session.setAttribute("loggedIn", loggedIn);
 
 		// Retrieving the role
+		@SuppressWarnings("unchecked")
 		Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder.getContext()
 				.getAuthentication().getAuthorities();
 
@@ -101,14 +101,39 @@ public class UserController {
 
 	@RequestMapping(value = "/shipment")
 	public String insertship(Model m, HttpSession session) {
-		// String email=(String)session.getAttribute("email");
-		// m.addAttribute("", "");
-		System.out.println("--Shipment Page--");
+		
+		 String email=(String)session.getAttribute("email");
+		User user=userDAO.getemail(email);
+		if(user.getRole().equals("Role_User") || user.getRole().equals("Role_Admin")) {	
+      	System.out.println("--Shipment Page--");
 		Shipment ship = new Shipment();
 		m.addAttribute(ship);
-		System.out.println("--Shipment ends Page--");
 		return "shipment";
+		}
+		return "login";
 	}
+	
+	@RequestMapping(value = "/shipadd", method = RequestMethod.POST)
+	public String gotoshipment(@ModelAttribute("ship") Shipment ship, Model m, HttpSession session) {
+
+		
+
+		String email = (String) session.getAttribute("email");
+		User user=userDAO.getemail(email);
+		if(user.getRole().equals("Role_User") || user.getRole().equals("Role_Admin")) {
+			
+		ship.setEmail(user.getEmail());
+
+		m.addAttribute("Shipment", new Shipment());
+		userDAO.creatshipadd(ship);
+
+		return "redirect:/Billing_Recipet";
+		}
+		
+		return "login";
+
+	}
+
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String updatepersondetails(Model m) {
@@ -118,22 +143,7 @@ public class UserController {
 		return "";
 	}
 
-	@RequestMapping(value = "/shipadd", method = RequestMethod.POST)
-	public String gotoshipment(@ModelAttribute("ship") Shipment ship, Model m, HttpSession session) {
-
-		System.out.println("Add shipment details");
-
-		String email = (String) session.getAttribute("email");
-		Orders order = new Orders();
-		order.setEmail(email);
-
-		m.addAttribute("Shipment", new Shipment());
-		userDAO.creatshipadd(ship);
-
-		return "redirect:/Billing_Recipet";
-
-	}
-
+	
 	@RequestMapping(value = "/addcoup", method = RequestMethod.POST)
 	public String gotoshipmen(@ModelAttribute("coupons") Coupons coupons, HttpSession session, Model m) {
 
@@ -154,14 +164,32 @@ public class UserController {
 		if (user.getRole().equals("Role_Admin")) {
 
 			Coupons coupons = new Coupons();
-			
-			List<Coupons> list=userDAO.getallcoups();
+
+			List<Coupons> list = userDAO.getallcoups();
 			m.addAttribute("couplist", list);
 			m.addAttribute(coupons);
 			return "coupons";
 		}
 		return "admin";
 
+	}
+
+	@RequestMapping(value = "deletecouponid/{id}", method = RequestMethod.GET)
+	public String deletecouponns(@PathVariable("id") int id, Model m, HttpSession session) {
+
+		String email = (String) session.getAttribute("email");
+		User user = userDAO.getemail(email);
+		if (user.getRole().equals("Role_Admin")) {
+			Coupons coupons = userDAO.getcouponid(id);
+			userDAO.deletecoup(coupons);
+
+			List<Coupons> list = userDAO.getallcoups();
+			m.addAttribute("couplist", list);
+			m.addAttribute(coupons);
+			return "redirect:/coupons";
+
+		}
+		return "admin";
 	}
 
 }

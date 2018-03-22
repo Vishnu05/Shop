@@ -94,4 +94,26 @@ public class UserDaoImpl implements UserDao {
 		return couplist;
 	}
 
+
+	public void deletecoup(Coupons coupons) {
+	
+		Session session=sessionF.openSession();
+		session.beginTransaction();
+		session.delete(coupons);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+
+	public Coupons getcouponid(int id) {
+		
+		Session session=sessionF.openSession();
+		session.beginTransaction();
+		Coupons coup=(Coupons)session.load(Coupons.class,id);
+		System.out.println("Coupon ID"+coup);
+		session.getTransaction().commit();
+		session.close();
+		return coup;
+	}
+
 }

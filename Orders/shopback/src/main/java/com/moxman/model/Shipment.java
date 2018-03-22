@@ -23,16 +23,11 @@ public class Shipment {
 	private String address2;
 	private String city;
 	private String state;
-	private User email;
+	private String email;
 	private String country;
 	private Date shipdate; 
 	
-	public User getEmail() {
-		return email;
-	}
-	public void setEmail(User email) {
-		this.email = email;
-	}
+	
 	 
 	public String getName() {
 		return name;
@@ -100,6 +95,12 @@ public class Shipment {
 	}
 	public void setShipdate(Date shipdate) {
 		this.shipdate = shipdate;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

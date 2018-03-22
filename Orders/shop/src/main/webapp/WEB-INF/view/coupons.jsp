@@ -34,55 +34,63 @@
 	<div>
 
 		<form:form commandName="coupons" action="addcoup" name="fm">
-			<div >
+			<div>
 				<h1>Coupons Generator</h1>
 
 				<div>
 					<label>Coupons ID</label>
-					<form:input path="couponid" />
+					<form:input path="couponid" required="required" />
 				</div>
 
 				<div>
 					<label>Expiry Date</label>
-					<form:input path="expirydate" />
+					<form:input path="expirydate" required="reqiured" />
 				</div>
 
+				<div>
+					<label>Discount percent</label>
+					<form:input path="percent" required="reqiured" />
+				</div>
 				<div>
 					<input type="submit" />
 				</div>
 			</div>
 		</form:form>
 
-<div>
-		<div class="container">
+		<div>
+			<div class="container">
 
-			<table
-				class="table table-striped table-bordered table-hover table-condensed">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Coupon ID</th>
-						<th>Expiry Date</th>
-						<th>Created ON</th>
-						<th>Operation</th>
-					</tr>
-				</thead>
-				<tr>
-					<c:forEach items="${couplist}" var="coupons">
-
+				<table
+					class="table table-striped table-bordered table-hover table-condensed">
+					<thead>
 						<tr>
-							<td>${coupons.id}</td>
-							<td>${coupons.couponid}</td>
-							<td>${coupons.expirydate }</td>
-							<td>${coupons.coupondate}</td>
+							<th>ID</th>
+							<th>Coupon ID</th>
+							<th>Expiry Date</th>
+							<th>Coupons Discount percent</th>
+							<th>Created ON</th>
+							<th>Operation</th>
 						</tr>
+					</thead>
+					<tr>
+						<c:forEach items="${couplist}" var="coupons">
 
-					</c:forEach>
-				</tr>
-			</table>
+							<tr>
+								<td>${coupons.id}</td>
+								<td>${coupons.couponid}</td>
+								<td>${coupons.expirydate }</td>
+								<td>${coupons.percent}</td>
+								<td>${coupons.coupondate}</td>
+								<td><a href="deletecouponid/${coupons.id} "> <span
+										class="glyphicon glyphicon-trash"></span></a></td>
+							</tr>
+
+						</c:forEach>
+					</tr>
+				</table>
+			</div>
+
 		</div>
-
-</div>
 	</div>
 </body>
 </html>

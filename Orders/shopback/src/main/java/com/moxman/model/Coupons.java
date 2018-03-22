@@ -20,6 +20,8 @@ public class Coupons {
 	private String expirydate;
 	
 	private Date coupondate;
+	
+	private String percent;
 
 	public int getId() {
 		return id;
@@ -51,6 +53,14 @@ public class Coupons {
 
 	public void setCoupondate(Date coupondate) {
 		this.coupondate = coupondate;
+	}
+
+	public String getPercent() {
+		return percent;
+	}
+
+	public void setPercent(String percent) {
+		this.percent = percent;
 	}
 
 	 

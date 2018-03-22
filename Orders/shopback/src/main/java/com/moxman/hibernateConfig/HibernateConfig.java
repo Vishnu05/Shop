@@ -39,7 +39,7 @@ public class HibernateConfig
 		driverMgrDataSource.setUrl("jdbc:mysql://localhost:3306/shop?useSSL=false");
 		
 		driverMgrDataSource.setUsername("root");
-		driverMgrDataSource.setPassword("admin");
+		driverMgrDataSource.setPassword("1234");
 		return driverMgrDataSource;
 	}
 	 

@@ -19,5 +19,6 @@ public interface UserDao {
 	void updateuser(User user);
 	void addcoupons(Coupons coupons);
 	List<Coupons> getallcoups();
-	
+	void deletecoup(Coupons coupons);
+	Coupons getcouponid(int id);
 }
