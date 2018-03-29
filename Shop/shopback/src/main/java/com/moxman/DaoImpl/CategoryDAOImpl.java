@@ -1,8 +1,8 @@
 package com.moxman.DaoImpl;
-import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -51,7 +51,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 	{
 		String hql = "FROM Category c  where c.NAME = :Name";
 		Session session=sessionFac.openSession();	
-		@SuppressWarnings("rawtypes")
 		Query query = session.createQuery(hql);
 		query.setParameter("Name",Name);
 		session.beginTransaction();
@@ -64,7 +63,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public void createCategory(Category category){
 		Session session=sessionFac.openSession();	
 		session.beginTransaction();
-		category.setCatdate(new Date());
 		session.persist(category);
 		session.getTransaction().commit();
 		session.close();

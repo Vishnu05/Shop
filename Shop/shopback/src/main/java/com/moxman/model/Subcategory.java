@@ -1,32 +1,28 @@
 package com.moxman.model;
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-
+import org.springframework.stereotype.Component;
+@Component
 @Entity
-@Table
 public class Subcategory implements Serializable  {
 	
 	private static final long serialVersionUID=11L;
 	
 	@Id
 	@GeneratedValue
-	private int subcatid;
+	int subcatid;
 		
 	
 	@NotNull
-	private String subcatname;
+	String subcatname;
 	
 	@NotNull 
-	private String subcatdescription;
-	
-	private Date subcatdate;
+	String subcatdescription;
 	
 	
 	int catid;
@@ -65,14 +61,6 @@ public class Subcategory implements Serializable  {
 
 	public void setCatid(int catid) {
 		this.catid = catid;
-	}
-
-	public Date getSubcatdate() {
-		return subcatdate;
-	}
-
-	public void setSubcatdate(Date subcatdate) {
-		this.subcatdate = subcatdate;
 	}
 
 	

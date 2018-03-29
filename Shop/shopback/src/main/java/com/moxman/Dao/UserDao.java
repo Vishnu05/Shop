@@ -12,13 +12,10 @@ import com.moxman.model.*;
 public interface UserDao {
 
 	//public boolean adduserUser(User user);
-	public void createuser(User fuck);
+	public void createuser(User user);
 	public void creatshipadd(Shipment ship);
 	public User getemail(String email);
 	public List<User> getalluser();
 	void updateuser(User user);
-	void addcoupons(Coupons coupons);
-	List<Coupons> getallcoups();
-	void deletecoup(Coupons coupons);
-	Coupons getcouponid(int id);
+	
 }

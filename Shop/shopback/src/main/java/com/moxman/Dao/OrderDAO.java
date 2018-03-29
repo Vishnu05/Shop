@@ -10,11 +10,9 @@ import com.moxman.model.*;
 public interface OrderDAO {
 	
 	 void addorder(Orders order);
-	 void removeorder(Orders order);
+	 void removeorder(int orderid);
 	 List<Orders> getallorders();
 	 Orders getorderid(int orderid);
 	 List<Orders> reteriveorders(String email);
-	 List<Orders> batch1(String email);
-	 List<Orders> batch2(String email);
 	 
 }

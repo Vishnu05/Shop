@@ -79,8 +79,7 @@ table>tbody>tr>td, .table>tfoot>tr>td {
 			DashBoard
 		</h3>
 		<h3 align="center" class="panel-title">
-			<span class="glyphicon glyphicon-home"></span><a
-				href="<c:url value="/admin"/>">Home</a>
+			<span class="glyphicon glyphicon-home"></span><a href="<c:url value="/admin"/>">Home</a>
 		</h3>
 		<h3 align="right" class="panel-title">
 			<span class="glyphicon glyphicon-log-out"></span><a href="#">Logout</a>
@@ -101,7 +100,6 @@ table>tbody>tr>td, .table>tfoot>tr>td {
 					<th style="width: 10%">Price</th>
 					<th style="width: 8%">Quantity</th>
 					<th style="width: 22%" class="text-center">Subtotal</th>
-
 					<th style="width: 10%"></th>
 				</tr>
 			</thead>
@@ -114,7 +112,7 @@ table>tbody>tr>td, .table>tfoot>tr>td {
 							<div class="row">
 
 								<div class="col-sm-10">
-
+						 
 									<h4 class="nomargin" id="pn">${orderitem.prodname}</h4>
 
 
@@ -123,9 +121,9 @@ table>tbody>tr>td, .table>tfoot>tr>td {
 						</td>
 						<td>
 							<h4>
-								 	<img src="<c:url value="/images/${cartitem.pid}.jpg"/>"
+								<!-- 	<img src="<c:url value="/images/${cartitem.proid}.jpg"/>"
 									style="height: 60px; width: 135px"
-									alt="Error on loading images" />  
+									alt="Error on loading images" />  -->
 							</h4>
 						</td>
 						<td data-th="Price"><span id="price" class="price">${orderitem.price}</span></td>
@@ -136,10 +134,6 @@ table>tbody>tr>td, .table>tfoot>tr>td {
 							id="subtotal" class="subtotal"> <i class="fa fa-inr"
 								aria-hidden="true"> ${orderitem.price* orderitem.quantity}</i>0
 						</span></td>
-
-						<td><a
-							href="<c:url value="deleteorder/${orderitem.orderid} "/>"><span
-								class="glyphicon glyphicon-trash"></span></a></td>
 
 						<!--   	<td class="actions" data-th=""><a
 							href=<c:url value="/deleteCartItem/${cartitem.citemid}"/>
@@ -155,25 +149,17 @@ table>tbody>tr>td, .table>tfoot>tr>td {
 					<td class="text-center"><strong></strong></td>
 				</tr>
 				<tr>
-					<td><a href="<c:url value="/productdisplay"/>"
-						class="btn btn-info"><i class="fa fa-angle-left"></i> Continue
-							Shopping</a></td>
+					<td><a href="<c:url value="/productdisplay"/>" class="btn btn-info"><i
+							class="fa fa-angle-left"></i> Continue Shopping</a></td>
 
 					<td colspan="2" class="hidden-xs"></td>
 
-
-					<td><a href="<c:url value="/cart"/>" class="btn btn-warning">
-							Cart</a></td>
+					<td><a href="<c:url value="/cart"/>" class="btn btn-warning"> Cart</a></td>
 
 					<td class="hidden-xs text-center"><strong>Total:</strong>
 					<td class="total"></td>
 
-					<c:if test="${n!=0}">
-
-					<td><a href="<c:url value="/shipment"/>"
-						class="btn btn-success">ship</a>
-						</c:if>
-						 <!--  	<c:if test="${n!=0}">
+					<td><a href="<c:url value="/shipment"/>" class="btn btn-success">ship</a>  <!--  	<c:if test="${n!=0}">
 						
 						<td><a href="shipment" id="w3s"
 							class="btn btn-success btn-block">Checkout<i

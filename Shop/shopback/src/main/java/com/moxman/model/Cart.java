@@ -1,17 +1,17 @@
 package com.moxman.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Transient;
-//import org.springframework.stereotype.Component;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-@Table
+@Component
 public class Cart  {
 
 	@Id
@@ -34,8 +34,6 @@ public class Cart  {
 	 
 	 
 	private String email;
-	
-	private Date cartdate;
 	
 	@Transient
 	MultipartFile pimage;
@@ -103,14 +101,6 @@ public class Cart  {
 
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
-	}
-
-	public Date getCartdate() {
-		return cartdate;
-	}
-
-	public void setCartdate(Date cartdate) {
-		this.cartdate = cartdate;
 	}
 
 	 

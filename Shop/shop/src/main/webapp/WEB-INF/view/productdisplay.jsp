@@ -59,18 +59,16 @@
 						<td>${product.quantity}</td>
 						<td>${product.catid}</td>
 						<td>${product.pprice}</td>     -->
-						
 						<td><a href="productdescription?id=${product.pid}"> <img
 								src="<c:url value="/images/${product.pid }.jpg"/>"
 								style="height: 200px; width: 40%" alt="Error on loading images" /></a>
 						<div><p style=font-size:20px >${product.pname} &emsp; &emsp; <i class="fas fa-rupee-sign"></i> Rate=${product.pprice}</p></div>
 							<div>
-								<a href="addcart/${product.pname}" class="btn btn-info">Add To Cart </a>					 
+								<a href="addcart/${product.pname}" class="btn btn-info">Add To Cart </a>
+								
+								 
 								
 							</div></td>
-							
-							
-						 
 						<!-- 	<td><div ><a href="cart" class="btn btn-info">Add To Cart</a></div></td>  -->
 					</tr>
 				</c:forEach>

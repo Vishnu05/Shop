@@ -1,20 +1,17 @@
 package com.moxman.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SecondaryTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-@Table(name="Orders")
-@SecondaryTable(name="Adminorders")
+@Table
 public class Orders {
 
 	@Id
@@ -22,8 +19,6 @@ public class Orders {
 	private int orderid;
 	
 	private String quantity;
-	
-	//private int pid;
 	
 	private float total;
 	
@@ -34,8 +29,6 @@ public class Orders {
 	private String email;
 	
 	private int citemid;
-	
-	private Date orderdate;
 	 
 	
 	@Transient
@@ -104,21 +97,5 @@ public class Orders {
 	public void setCitemid(int citemid) {
 		this.citemid = citemid;
 	}
-
-	public Date getOrderdate() {
-		return orderdate;
-	}
-
-	public void setOrderdate(Date orderdate) {
-		this.orderdate = orderdate;
-	}
-
-	/*public int getPid() {
-		return pid;
-	}
-
-	public void setPid(int pid) {
-		this.pid = pid;
-	}*/
 	
 }

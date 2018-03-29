@@ -1,13 +1,14 @@
 package com.moxman.model;
 
 import java.io.Serializable;
-import java.util.Date;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.stereotype.Component;
 
  
 @Entity
@@ -27,8 +28,6 @@ public class User implements Serializable {
 	private String lastname;
 	private String role="Role_User";
 	boolean enabled=true;
-	private Date userdate;
-	
 	
 	public String getRole() {
 		return role;
@@ -92,12 +91,6 @@ public class User implements Serializable {
 //	public void setUsername(String username) {
 //		this.username = username;
 //	}
-	public Date getUserdate() {
-		return userdate;
-	}
-	public void setUserdate(Date userdate) {
-		this.userdate = userdate;
-	}
 	 
 	
 	 

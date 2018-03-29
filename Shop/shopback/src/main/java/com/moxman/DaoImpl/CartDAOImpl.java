@@ -1,7 +1,6 @@
 
 package com.moxman.DaoImpl;
 
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -29,7 +28,6 @@ public class CartDAOImpl implements CartDAO {
 	public void insertCart(Cart cart) {
 		Session session = sessionFac.openSession();
 		session.beginTransaction();
-		cart.setCartdate(new Date());
 		session.persist(cart);
 		session.getTransaction().commit();
 		session.close();

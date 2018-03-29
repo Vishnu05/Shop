@@ -64,9 +64,4 @@ public class IndexController {
 		return "userprofile";
 	}
 	     
-	@RequestMapping(value="/countdown")
-	public String countdown()
-	{
-		return "countdown";
-	}
 }

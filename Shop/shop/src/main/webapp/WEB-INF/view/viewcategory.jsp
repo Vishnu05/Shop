@@ -23,23 +23,21 @@
 
 
 <!-- Displaying the Category data using Table -->
-<table class="table table-striped table-hover table-condensed table-bordered" >
+<table class="table table-striped" >
 
-<thead>
 	<tr bgcolor="#ff66ff">
-		<th>Category ID</th>
-		<th>Category Name</th>
-		<th>Category Desc</th>
-		<th>Operations</th>
-	</tr></thead>
+		<td>Category ID</td>
+		<td>Category Name</td>
+		<td>Category Desc</td>
+		<td>Operations</td>
+	</tr>
 	<c:forEach items="${catdetail}" var="category">
 		<tr bgcolor="#00ff99">
 			<td>${category.catid}</td>
 			<td>${category.catname}</td>
 			<td>${category.catdescription}</td>
-			<td>
-				<a href="<c:url value="updateCategory/${category.catid}"/>"><span class="glyphicon glyphicon-pencil"></span></a>&emsp;
-				<a href="<c:url value="deleteCategory/${category.catid}"/>"><span class="glyphicon glyphicon-trash"></span></a>
+			<td><a href="<c:url value="deleteCategory/${category.catid}"/>">Delete</a>
+				<a href="<c:url value="updateCategory/${category.catid}"/>">Update</a>
 			</td>
 		</tr>
 	</c:forEach>

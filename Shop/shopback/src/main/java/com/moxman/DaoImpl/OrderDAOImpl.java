@@ -1,7 +1,6 @@
 package com.moxman.DaoImpl;
 
 
-import java.util.Date;
 import java.util.List;
 
  
@@ -25,7 +24,6 @@ public class OrderDAOImpl implements OrderDAO {
 		
 		Session session=sessionf.openSession();
 		session.beginTransaction();
-		o.setOrderdate(new Date());
 		session.persist(o);
 		session.getTransaction().commit();
 		session.close();
@@ -79,30 +77,16 @@ public class OrderDAOImpl implements OrderDAO {
  
 		}
 
-		public void removeorder(Orders order) {
+		public void removeorder(int orderid) {
 			
 
 			Session session=sessionf.openSession();
 			session.beginTransaction();
-			//Query query=session.createQuery("delete from Orders where orderid=:orderid");
-			session.delete(order);
-			//query.setParameter("orderid",  orderid);
-			session.getTransaction().commit();
-			session.close();
+			Query query=session.createQuery("delete from Orders where orderid=?");
+			query.setParameter("orderid",  orderid);
 			
 			
-		}
-
-		 
-
-		public List<Orders> batch1(String email) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		public List<Orders> batch2(String email) {
-			// TODO Auto-generated method stub
-			return null;
+			
 		}
 	 
 

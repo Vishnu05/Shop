@@ -1,18 +1,19 @@
 package com.moxman.model;
 
 import java.io.Serializable;
-import java.util.Date;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-
+@Component
 @Entity
-@Table
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 2L;
@@ -36,9 +37,6 @@ public class Product implements Serializable {
 	private String catname;
 
 	private String subcatname;
-	
-	private Date proddate;
-	
 	
 	@Transient
 	MultipartFile pimage;
@@ -129,14 +127,6 @@ public class Product implements Serializable {
 
 	public void setPid(int pid) {
 		this.pid = pid;
-	}
-
-	public Date getProddate() {
-		return proddate;
-	}
-
-	public void setProddate(Date proddate) {
-		this.proddate = proddate;
 	}
 
 }

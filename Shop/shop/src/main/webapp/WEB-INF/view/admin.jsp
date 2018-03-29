@@ -878,7 +878,6 @@ fieldset[disabled] .btn-mokka.active {
                           <a href="#" class="btn btn-dpurple btn-lg" role="button"><span class="glyphicon glyphicon-check glyphsize green"></span> <br/>Invoices<br />Paid</a>
                           <a href="#" class="btn btn-dpurple btn-lg" role="button"><span class="glyphicon glyphicon-remove glyphsize red"></span> <br/>Invoices<br />Canceled</a>
                           <a href="#" class="btn btn-dpurple btn-lg" role="button"><span class="glyphicon glyphicon-saved glyphsize lilac"></span> <br/>Invoices<br />Archived</a>
-                          <a href="coupons" class="btn btn-dpurple btn-lg" role="button"><span class="glyphicon glyphicon-discount glyphsize yellow"></span><br/ > Coupons Generate<br /></a>
                         </div>
                     </div>
                     <div class="row">

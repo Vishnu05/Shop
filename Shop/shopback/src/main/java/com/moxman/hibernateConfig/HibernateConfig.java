@@ -1,8 +1,7 @@
-package com.moxman.hibernateConfig;
+ package com.moxman.hibernateConfig;
+
 import java.util.Properties;
-
 import javax.sql.DataSource;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,67 +12,63 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.moxman.model.Cart;
-import com.moxman.model.Category;
-import com.moxman.model.Coupons;
-import com.moxman.model.Orders;
-import com.moxman.model.Product;
-import com.moxman.model.Shipment;
-import com.moxman.model.Subcategory;
-import com.moxman.model.User;
+import com.moxman.model.*;
 
-
- 
 
 @Configuration
-@EnableTransactionManagement
 @ComponentScan("com")
-public class HibernateConfig 
-{
+@EnableTransactionManagement
+public class HibernateConfig {
 	@Autowired
 	@Bean(name="datasource")
-	public DataSource getH2DataSource()
-	{
-		DriverManagerDataSource driverMgrDataSource=new DriverManagerDataSource();
-		driverMgrDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		driverMgrDataSource.setUrl("jdbc:mysql://localhost:3306/shop?useSSL=false");
+	public DataSource getH2() {
+		System.out.println("Hibernate initiated");
+		DriverManagerDataSource dt=new DriverManagerDataSource();
+		dt.setDriverClassName("org.h2.Driver");
+		dt.setUrl("jdbc:h2:tcp://localhost/~/test0510");
+		dt.setUsername("sa");
+		dt.setPassword("");
+		System.out.println("connection established");
+		return dt;
+	}
+	private Properties getHiberProps(){
+		Properties p=new Properties();
+		p.put("hibernate.dialect","org.hibernate.dialect.H2Dialect");
+		p.put("hibernate.show_sql","true");
+		p.put("hibernate.hbm2ddl.auto","update");
+		return p;
+	}
+				
 		
-		driverMgrDataSource.setUsername("root");
-		driverMgrDataSource.setPassword("admin");
-		return driverMgrDataSource;
-	}
-	 
-	@Bean(name="sessionFactory")
-	public SessionFactory getSessionFactory()
-	{
-		Properties hibernateProperties=new Properties();
-		hibernateProperties.setProperty("hibernate.hbm2ddl.auto","update");
-		hibernateProperties.put("hibernate.dialect","org.hibernate.dialect.MySQL5Dialect");
 		
-		LocalSessionFactoryBuilder localSessionFacBuilder=new LocalSessionFactoryBuilder(getH2DataSource());
-		localSessionFacBuilder.addProperties(hibernateProperties);
-		localSessionFacBuilder.addAnnotatedClass(User.class);
-		localSessionFacBuilder.addAnnotatedClass(Category.class);
-		localSessionFacBuilder.addAnnotatedClass(Product.class);
-		localSessionFacBuilder.addAnnotatedClass(Shipment.class);
-		localSessionFacBuilder.addAnnotatedClass(Subcategory.class);
-		localSessionFacBuilder.addAnnotatedClass(Cart.class);
-		localSessionFacBuilder.addAnnotatedClass(Orders.class);
-		localSessionFacBuilder.addAnnotatedClass(Coupons.class);
-	 	SessionFactory sessionFactory=localSessionFacBuilder.buildSessionFactory();
-		System.out.println("Session Factory Object Created");
-		return sessionFactory;
+		
+		@Autowired
+		@Bean(name="transactionManager")
+		public HibernateTransactionManager getTransaction(SessionFactory sessionFactory) {
+			
+			HibernateTransactionManager tm=new HibernateTransactionManager(sessionFactory);
+			return tm;
+		}
+		@Autowired
+		@Bean(name="sessionFactory")
+		public SessionFactory getSession(DataSource datasource) {
+			LocalSessionFactoryBuilder lsfb=new LocalSessionFactoryBuilder(datasource);
+			lsfb.addProperties(getHiberProps());
+			lsfb.addAnnotatedClass(User.class);
+			lsfb.addAnnotatedClass(Cart.class);
+		//	lsfb.addAnnotatedClass(Order.class);
+			lsfb.addAnnotatedClass(Orders.class);
+			lsfb.addAnnotatedClass(Product.class);
+			lsfb.addAnnotatedClass(Category.class);
+			lsfb.addAnnotatedClass(Subcategory.class);
+			lsfb.addAnnotatedClass(Shipment.class);
+			
+			return lsfb.buildSessionFactory();
+		}		
+		
 	}
-	 
-	@Bean
-	public HibernateTransactionManager getHibernateTransactionManager(SessionFactory sessionFactory)
-	{
-		HibernateTransactionManager hibernateTranMgr=new HibernateTransactionManager(sessionFactory);
-		return hibernateTranMgr;
-	}
+
+
 	
-}
 
-
-
-
+	

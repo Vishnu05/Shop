@@ -1,5 +1,4 @@
 package com.moxman.DaoImpl;
-import java.util.Date;
 import java.util.List;
 import org.hibernate.*;
 import org.hibernate.query.Query;
@@ -58,7 +57,6 @@ public class ProductDAOImpl implements ProductDAO{
 	public void createProduct(Product product){
 		Session session=sessionFac.openSession();	
 		session.beginTransaction();
-		product.setProddate(new Date());
 		session.persist(product);
 		session.getTransaction().commit();
 		session.close();

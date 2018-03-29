@@ -83,7 +83,7 @@ public class ProductController {
 		}
 		System.out.println("images stored");
 
-		return "redirect:/newproduct";
+		return "redirect:/viewproduct";
 	}
 
 	@RequestMapping(value = "viewproduct")
@@ -152,8 +152,8 @@ public class ProductController {
 	}
 	
 
-/*	
-	@RequestMapping(value="/productdescription/{productid}")
+	
+	/*@RequestMapping(value="/productdescription/{productid}")
 	public String productdisrciption(@PathVariable("productid") int productid,Model m) {
 		
 		productDAOImpl.getProductbyID(productid);
@@ -166,23 +166,15 @@ public class ProductController {
 		return "productdescitption";
 	}*/
 	
-	/*@RequestMapping(value="productdescription/{pid}")
+	@RequestMapping(value="productdescription/{pid}")
 	public String showProductDesc(@PathVariable("pid")int productId,Model m)
 	{
 		Product product=productDAOImpl.getProductbyID(productId);  //getProduct(productId);
 		m.addAttribute("product",product);
 		return "productdesc";
-	}*/
-	
-	@RequestMapping(value="productdescription")
-	public String showProductDesc(@RequestParam("id")int productId,Model m)
-	{
-		//int id=Integer.parseInt(productId);
-		Product product=productDAOImpl.getProductbyID(productId);  //getProduct(productId); 
-		
-		m.addAttribute("product",product);
-		return "productdesc";
 	}
+	
+ 
 
 	
 }
