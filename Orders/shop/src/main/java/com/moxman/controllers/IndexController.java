@@ -69,4 +69,12 @@ public class IndexController {
 	{
 		return "countdown";
 	}
+	
+	@RequestMapping(value="/header.html")
+	public String gotoheader() {
+		
+		return "header";
+		
+	}
+	
 }

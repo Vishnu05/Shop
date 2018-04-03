@@ -1,7 +1,7 @@
 package com.moxman.Dao;
 import java.util.List;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+//import org.springframework.stereotype.Service;
 import com.moxman.model.*;
 
 @Repository("SubcategoryDAO")

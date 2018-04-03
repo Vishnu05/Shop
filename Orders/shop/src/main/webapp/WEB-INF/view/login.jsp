@@ -1,8 +1,13 @@
+  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<div >
+  <%@ include file="header.jsp" %></div>
+	
  <!DOCTYPE html>
-
-
 <html lang="en">
 <head>
+ 
 <style>
 input[type=email]{
     
@@ -37,6 +42,8 @@ input[type=password]{
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+
+
  
 <div id="regContainer" class="container">
       <div class="row">

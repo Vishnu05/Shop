@@ -3,6 +3,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,9 +113,9 @@ table>tbody>tr>td, .table>tfoot>tr>td {
 
 							}
 						});
-		$("a").click(function() {
-			$("#w3s").attr("href", "check_orders/" + total); //sum--> total
-		});
+	//	$("a").click(function() {
+		//	$("#w3s").attr("href", "check_orders/" + total); //sum--> total
+	//	});
 		//just update the total to sum  
 		$('.total1').text('Rs.' + total); //sum --> total
 
@@ -234,7 +235,7 @@ table>tbody>tr>td, .table>tfoot>tr>td {
                     				<option value="50">50</option>
                     				 
                     				 
-                			</select>  
+                			</select>   
                 			 <span class="status"></span></td>
                 			 
 						<td data-th="Subtotal" class="text-center" id="amount">
@@ -262,7 +263,7 @@ table>tbody>tr>td, .table>tfoot>tr>td {
 					
 					<td class="total1"></td> 
 					<c:if test="${n!=0}">
-					<td class=""><a href="check_orders" id="w3s" class="btn btn-success btn-block">Checkout</a></td></c:if>
+					<td class=""><a href="shipment" id="w3s" class="btn btn-success btn-block">Proceed To Checkout</a></td></c:if>
 					
 				<!-- 	<c:if test="${n!=0}">
 				<td><a href="orders" id="w3s"

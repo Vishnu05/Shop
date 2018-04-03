@@ -3,14 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%@ include file="header.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Administrator</title>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
  <style>
- body { padding-top:20px; }
-.container {
-    max-width: 1200px;
-}
+ body { 
+ width:100%;
+ }
+
 .panel-body 
 .btn:not(.btn-block) { 
 	width:140px !important;
@@ -816,7 +818,8 @@ fieldset[disabled] .btn-mokka.active {
 </head>
 <body>
 
-
+<div style="width:100%">
+</div>
 <div class="container"><br>
 
 <section>

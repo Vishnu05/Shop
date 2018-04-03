@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%> 
-	<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ include file="header.jsp" %>
 <html>
 <link
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/3.3.7/css/font-awesome.min.css"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -20,73 +21,85 @@
 <body>
 
 
-<div class="panel-heading">
-	<h3 align="left" class="panel-title">
-		<span class="glyphicon glyphicon-user"></span> Administrator DashBoard
-	</h3>
-	<h3 align="center" class="panel-title">
-		<span class="glyphicon glyphicon-home"></span><a href="admin">Home</a>
-	</h3>
-	<h3 align="right" class="panel-title">
-		<span class="glyphicon glyphicon-log-out"></span><a href="#">Logout</a>
-	</h3>
-</div>	<br>
+	<div class="panel-heading">
+		<h3 align="left" class="panel-title">
+			<span class="glyphicon glyphicon-user"></span> Administrator
+			DashBoard
+		</h3>
+		<h3 align="center" class="panel-title">
+			<span class="glyphicon glyphicon-home"></span><a href="admin">Home</a>
+		</h3>
+		<h3 align="right" class="panel-title">
+			<span class="glyphicon glyphicon-log-out"></span><a href="#">Logout</a>
+		</h3>
+	</div>
+	<br>
 	<br>
 	<br>
 	<diV class="container">
 		<div class="form-group">
 
-			<form:form action="shipadd"  commandName="shipment" method="POST" >
+			<form:form action="shipadd" commandName="shipment" method="POST">
 				<div>
 					<h3 style="color: blue;">Shipping Address</h3>
 				</div>
-				<div class="col-md-6 col-sm-3">
-					<label>Name</label> 
-				    	<form:input path="name"  type="text" required="required"/>  
+				
+				<div class="col-md-6 ">
+					<label>Name</label>
+					<form:input path="name" type="text" required="required" />
 				</div>
 
 				<div class="col-md-6 col-sm-3">
-					<label>Phone Number</label> 
-					<form:input type="text" path="phonenumber" required="required"/>
+					<label>Phone Number</label>
+					<form:input type="text" path="phonenumber" placeholder=""
+						required="required" />
 				</div>
 
 				<div class="col-md-6 col-sm-3">
-					<label>Door Number</label> 
-					<form:input type="text" path="doorno" required="required"/>
+					<label>Door Number</label>
+					<form:input type="text" path="doorno" required="required" />
 				</div>
 
 				<div class="col-md-6 col-sm-3">
-					<label>Address 1</label> 
-					<form:input type="text" path="address1" required="required"/>
+					<label>Address 1</label>
+					<form:input type="text" path="address1" required="required" />
 				</div>
 
 				<div class="col-md-6 col-sm-3">
-					<label>Address 2 </label> <form:input type="text" path="address2" required="required"/>
+					<label>Address 2 </label>
+					<form:input type="text" path="address2" required="required" />
 				</div>
 
 				<div class="col-md-6 col-sm-3">
-					<label>City </label> <form:input type="text" path="city" required="required"/>
+					<label>City </label>
+					<form:input type="text" path="city" required="required" />
 				</div>
 
 				<div class="col-md-6 col-sm-3">
-					<label> State </label> <form:input type="text" path="state" required="required"/>
+					<label> State </label>
+					<form:input type="text" path="state" required="required" />
 				</div>
 
 				<div class="col-md-6 col-sm-3">
-					<label>Pin Code </label> <form:input type="text" path="pincode" required="required"/>
+					<label>Pin Code </label>
+					<form:input type="text" path="pincode" required="required" />
 				</div>
 
 				<div class="col-md-6 col-sm-3">
-					<label>Country</label> <form:input type="text" path="country" required="required"/>
+					<label>Country</label>
+					<form:input type="text" path="country" required="required" />
 				</div>
 				<br>
+				
 				<div>
 					<input type="submit" class="btn btn-btn-primary">
 				</div>
 
 			</form:form>
-	
-		<div class="colg-md-5"><a href="Billing_Recipet" class="btn btn-info">Invoice Page</a> </div>
+
+			<div class="colg-md-5">
+				<a href="oderdetails" class="btn btn-info">Invoice Page</a>
+			</div>
 
 		</div>
 	</diV>

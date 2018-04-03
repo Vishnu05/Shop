@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.moxman.Dao.CartDAO;
 import com.moxman.Dao.UserDao;
+import com.moxman.exception.productexception;
 import com.moxman.model.Coupons;
 import com.moxman.model.Shipment;
 import com.moxman.model.User;
@@ -26,6 +28,9 @@ public class UserController {
 
 	@Autowired
 	UserDao userDAO;
+
+	@Autowired
+	CartDAO cartdao;
 
 	@RequestMapping(value = "adduser", method = RequestMethod.POST)
 	public String adduser(@ModelAttribute("user") User user85, Model m) {
@@ -101,39 +106,40 @@ public class UserController {
 
 	@RequestMapping(value = "/shipment")
 	public String insertship(Model m, HttpSession session) {
-		
-		 String email=(String)session.getAttribute("email");
-		User user=userDAO.getemail(email);
-		if(user.getRole().equals("Role_User") || user.getRole().equals("Role_Admin")) {	
-      	System.out.println("--Shipment Page--");
-		Shipment ship = new Shipment();
-		m.addAttribute(ship);
-		return "shipment";
+
+		String email = (String) session.getAttribute("email");
+		User user = userDAO.getemail(email);
+		if (user.getRole().equals("Role_User") || user.getRole().equals("Role_Admin")) {
+			System.out.println("--Shipment Page--");
+			Shipment ship = new Shipment();
+			m.addAttribute(ship);
+			return "shipment";
 		}
 		return "login";
 	}
-	
+
 	@RequestMapping(value = "/shipadd", method = RequestMethod.POST)
 	public String gotoshipment(@ModelAttribute("ship") Shipment ship, Model m, HttpSession session) {
 
-		
-
 		String email = (String) session.getAttribute("email");
-		User user=userDAO.getemail(email);
-		if(user.getRole().equals("Role_User") || user.getRole().equals("Role_Admin")) {
-			
-		ship.setEmail(user.getEmail());
+		User user = userDAO.getemail(email);
 
-		m.addAttribute("Shipment", new Shipment());
-		userDAO.creatshipadd(ship);
+		cartdao.retrive(email);
 
-		return "redirect:/Billing_Recipet";
+		Shipment ship1 = new Shipment();
+		ship1.setEmail(email);
+
+		if (user.getRole().equals("Role_User") || user.getRole().equals("Role_Admin")) {
+
+			m.addAttribute("Shipment", new Shipment());
+			userDAO.creatshipadd(ship);
+
+			return "redirect:/Billing_Recipet";
 		}
-		
+
 		return "login";
 
 	}
-
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String updatepersondetails(Model m) {
@@ -143,7 +149,6 @@ public class UserController {
 		return "";
 	}
 
-	
 	@RequestMapping(value = "/addcoup", method = RequestMethod.POST)
 	public String gotoshipmen(@ModelAttribute("coupons") Coupons coupons, HttpSession session, Model m) {
 
@@ -156,8 +161,10 @@ public class UserController {
 		return "admin";
 	}
 
+	 
+	
 	@RequestMapping(value = "/coupons")
-	public String coupons(HttpSession session, Model m) {
+	public String coupons(HttpSession session, Model m) { 
 
 		String email = (String) session.getAttribute("email");
 		User user = userDAO.getemail(email);
@@ -171,7 +178,7 @@ public class UserController {
 			return "coupons";
 		}
 		return "admin";
-
+                                     
 	}
 
 	@RequestMapping(value = "deletecouponid/{id}", method = RequestMethod.GET)
@@ -191,5 +198,6 @@ public class UserController {
 		}
 		return "admin";
 	}
+
 
 }

@@ -152,28 +152,7 @@ public class ProductController {
 	}
 	
 
-/*	
-	@RequestMapping(value="/productdescription/{productid}")
-	public String productdisrciption(@PathVariable("productid") int productid,Model m) {
-		
-		productDAOImpl.getProductbyID(productid);
-		Product product=new Product();
-		m.addAttribute(product);
-		
-		List<Product> listproduct=productDAOImpl.getAllProduct();
-		m.addAttribute("product", listproduct);
-		
-		return "productdescitption";
-	}*/
-	
-	/*@RequestMapping(value="productdescription/{pid}")
-	public String showProductDesc(@PathVariable("pid")int productId,Model m)
-	{
-		Product product=productDAOImpl.getProductbyID(productId);  //getProduct(productId);
-		m.addAttribute("product",product);
-		return "productdesc";
-	}*/
-	
+
 	@RequestMapping(value="productdescription")
 	public String showProductDesc(@RequestParam("id")int productId,Model m)
 	{
@@ -181,8 +160,8 @@ public class ProductController {
 		Product product=productDAOImpl.getProductbyID(productId);  //getProduct(productId); 
 		
 		m.addAttribute("product",product);
-		return "productdesc";
+		return "productdescription";
 	}
 
-	
+	 	
 }

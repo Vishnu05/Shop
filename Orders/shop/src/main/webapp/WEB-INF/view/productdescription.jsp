@@ -1,6 +1,6 @@
 <%@ page language="java" import="com.moxman.model.Product" contentType="text/html"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ include file="header.jsp" %>
 <html>
 <head>
 <title>Insert title here</title>
@@ -13,13 +13,13 @@
 </head>
 <body>
 
-<%@ include file="header.jsp" %>
+
 <div class="container"> 
 <table class="table">
 
 <tr>
 		<td rowspan="5">
-			<img src="<c:url value="/images/${product.productId}.jpg" />"style="height: 200px; width: 60%"/>
+			<img src="<c:url value="/images/${product.pid}.jpg" />"style="height: 400px; width: 50%"/>
 		</td>
 		<td>&nbsp;</td>
 	</tr>
@@ -35,6 +35,8 @@
 	<tr>
 		<td>Product Price:${product.pprice}</td>
 	</tr>
+	
+	
 	<tr>
 		 <td>	<c:if test="${username != null}">
 						<a href="addcartproduct/${product.productName}"
