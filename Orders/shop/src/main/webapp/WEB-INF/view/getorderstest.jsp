@@ -26,17 +26,19 @@
 			<h3>Getting Order Details</h3>
 		</div>
 		<br> <br>
-		<form action="getlist" method="post" >
+		<form action="getorders" method="get" >
 			<div class="col-md-4">
-				<label>FROM</label><br> <input   type="datetime-local"
-					required="required">
-
+				<label>FROM</label><br> <input   type="date"
+					required="required" name = "fromdate ">
+<!-- i have no property like that ?  is this property should exists in table or dummy?wait asshole lol -->
 			</div>
 
 			<div class="col-md-4">
-				<label>TO</label><br> <input type="datetime-local"
-					required="required">
+				<label>TO</label><br> <input type="date"
+					required="required" name="todate">
 			</div>
+
+
 
 			<div class="col-md-1">
 				<br> <input type="submit" value="getlist">

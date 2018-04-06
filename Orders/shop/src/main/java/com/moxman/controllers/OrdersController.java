@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.moxman.Dao.CartDAO;
 import com.moxman.Dao.OrderDAO;
 import com.moxman.Dao.UserDao;
@@ -137,14 +139,25 @@ public class OrdersController {
 	
 	
 	@RequestMapping(value = "/getorders", method = RequestMethod.GET)
-	public String batch1(Model m, HttpSession session) {
+	public String batch1(Model m, HttpSession session,@RequestParam("fromdate")String fromdate,@RequestParam("todate")String todate ) {
 
 		String email = (String) session.getAttribute("email");
+		
+		/*
+		 * the parametres should pass to request | you dont have to worry, spring will taekcare ok will see 
+		 * how the code know what is from date ?? wait j
+		 * String fromdate = request how to pass the date to controller and it must go to that query and fetch data
+		 * */
+		//now you have two variables fromdate and to date received from the frontend good
+		System.out.println(fromdate+" "+todate);
 		User user = userdao.getemail(email);
 		// if (user.getRole().equals(email)) {
 		Orders order = new Orders();
-
-		 List<Orders> list = orderdao.batch1(email);
+		
+		//TEST IT DA!!!!!! wait Done!!! how to pass the string in query
+		//covert the datesring to dateobject dood one sec wait 
+		  
+		 List<Orders> list = orderdao.batch1(email,fromdate,todate);// this will call the backend ok
 		 m.addAttribute("vat", list);
 		 m.addAttribute(order);
 

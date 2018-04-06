@@ -14,7 +14,7 @@ public interface OrderDAO {
 	 List<Orders> getallorders();
 	 Orders getorderid(int orderid);
 	 List<Orders> reteriveorders(String email);
-	 List<Orders> batch1(String email);
+	 List<Orders> batch1(String email,String fromdate, String todate);
 	 List<Orders> batch2(String email); 
 	 
 	 

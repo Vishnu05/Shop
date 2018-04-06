@@ -84,17 +84,27 @@ public class OrderDAOImpl implements OrderDAO {
 
 
 		
-		public List<Orders> batch1(String email) {
+		public List<Orders> batch1(String email,String fromdate, String todate){
 			 
 		
 			Session session=sessionf.openSession();
 			session.beginTransaction();
-			Query query=session.createQuery("from Orders where orderdate between '2018-03-20 14:34:16' and '2018-03-26 15:16:16'");
+			String querystring = "from Orders where orderdate between '"+ fromdate + "' and '" + todate + "'";
+			System.out.println(querystring);
+			Query query=session.createQuery(querystring);  
+			 
+			// how to pass the date here no need of converting the date if we just pass it in that ? mark the data will be reterived //okay
+			//from where do you callt from controller to here
+			/*
+			 * it is just warning no worries Nod da that is the command to execute queres?
+			 * yeah da what to do now do you know what is suppress warning? yeah unchecked list ? i dont know
+			 * ignore warnings for now. you can deal wiht them laterfine  */
+			@SuppressWarnings("unchecked")
 			List<Orders> list=query.list();
 			session.getTransaction().commit();
 			session.close();
- 		
-			
+ 		//understood? yeah good da . thoo Test it now. with sample dates give me sample dates no records da it is in my office pc but there is table with data and date
+			// wait ill import the table here and check this one 
 //			@SuppressWarnings("unchecked")
 //			List<Orders> list=query.list();
 			

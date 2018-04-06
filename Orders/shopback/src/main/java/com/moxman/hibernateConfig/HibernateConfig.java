@@ -20,7 +20,9 @@ import com.moxman.model.Orders;
 import com.moxman.model.Product;
 import com.moxman.model.Shipment;
 import com.moxman.model.Subcategory;
+import com.moxman.model.Test;
 import com.moxman.model.User;
+
 
 
  
@@ -60,6 +62,7 @@ public class HibernateConfig
 		localSessionFacBuilder.addAnnotatedClass(Cart.class);
 		localSessionFacBuilder.addAnnotatedClass(Orders.class);
 		localSessionFacBuilder.addAnnotatedClass(Coupons.class);
+		//localSessionFacBuilder.addAnnotatedClass(Test.class);
 	 	SessionFactory sessionFactory=localSessionFacBuilder.buildSessionFactory();
 		System.out.println("Session Factory Object Created");
 		return sessionFactory;
