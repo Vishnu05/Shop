@@ -43,11 +43,11 @@
 
 
 			<tr>
-				<td><c:if test="${username != null}">
-						<a href="addcartproduct/${product.productName}"
+				<td><c:if test="${email != null}">
+						<a href="addcart/${product.pname}"
 							class="btn btn-default add-to-cart"><i
 							class="fa fa-shopping-cart"></i>Add to cart</a>
-					</c:if> <c:if test="${username == null}">
+					</c:if> <c:if test="${email == null}">
 						<a href="login" class="btn btn-default add-to-cart"><i
 							class="fa fa-shopping-cart"></i>Add to cart</a>
 					</c:if></td>

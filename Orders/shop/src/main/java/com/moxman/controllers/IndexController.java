@@ -40,6 +40,14 @@ public class IndexController {
 	         return "index";
 	   } */
 	
+	@RequestMapping(value = "/index")
+	public String getproductdisplay(Model m) {
+
+		List<Product> list = productdao.getAllProduct();
+		m.addAttribute("proddetails", list);
+		return "index";
+	}
+	
 	@RequestMapping(value="/admin")
 	   public String gotoadmin() {
 	         return "admin";
@@ -80,11 +88,11 @@ public class IndexController {
 		
 	}
 	
-	@RequestMapping(value="index")
+	/*@RequestMapping(value="index")
 	public String indexpage() {
 		
 		return "index";
-	}
+	}*/
 	
 	
 	@RequestMapping(value="searchbyAll",method=RequestMethod.POST)

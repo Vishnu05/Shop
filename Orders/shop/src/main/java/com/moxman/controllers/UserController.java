@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.moxman.Dao.CartDAO;
@@ -21,6 +24,7 @@ import com.moxman.Dao.UserDao;
 import com.moxman.model.Coupons;
 import com.moxman.model.Shipment;
 import com.moxman.model.User;
+
 
 @Controller
 public class UserController {
@@ -161,7 +165,6 @@ public class UserController {
 	}
 
 	 
-	
 	@RequestMapping(value = "/coupons")
 	public String coupons(HttpSession session, Model m) { 
 
@@ -181,22 +184,23 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "deletecouponid/{id}", method = RequestMethod.GET)
-	public String deletecouponns(@PathVariable("id") int id, Model m, HttpSession session) {
+	public String deletecouponns(@PathVariable("id") String id, Model m, HttpSession session) {
 
 		String email = (String) session.getAttribute("email");
 		User user = userDAO.getemail(email);
-		if (user.getRole().equals("Role_Admin")) {
-			Coupons coupons = userDAO.getcouponid(id);
-			userDAO.deletecoup(coupons);
-
-			List<Coupons> list = userDAO.getallcoups();
-			m.addAttribute("couplist", list);
-			m.addAttribute(coupons);
-			return "redirect:/coupons";
-
-		}
+//		if (user.getRole().equals("Role_Admin")) {
+//			Coupons coupons = userDAO.getcouponid(id);
+//			userDAO.deletecoup(coupons);
+//
+//			List<Coupons> list = userDAO.getallcoups();
+//			m.addAttribute("couplist", list);
+//			m.addAttribute(coupons);
+//			return "redirect:/coupons";
+//
+//		}
 		return "admin";
 	}
 
-
 }
+
+

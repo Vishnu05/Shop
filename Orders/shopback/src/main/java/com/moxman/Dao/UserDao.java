@@ -20,5 +20,7 @@ public interface UserDao {
 	void addcoupons(Coupons coupons);
 	List<Coupons> getallcoups();
 	void deletecoup(Coupons coupons);
-	Coupons getcouponid(int id);
+	Coupons getcouponid(String id);
+	List<Coupons> check(String coupon);
+	
 }

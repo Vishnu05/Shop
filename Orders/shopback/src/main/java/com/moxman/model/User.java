@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -29,6 +30,11 @@ public class User implements Serializable {
 	boolean enabled=true;
 	private Date userdate;
 	
+	@OneToOne
+	private Cart cartdetails;
+	
+	
+	
 	
 	public String getRole() {
 		return role;
@@ -43,12 +49,7 @@ public class User implements Serializable {
 		this.email = email;
 	}
  
-//	public String getConfirmpassword() {
-//		return confirmpassword;
-//	}
-//	public void setConfirmpassword(String confirmpassword) {
-//		this.confirmpassword = confirmpassword;
-//	}
+ 
 	public String getPhonenumber() {
 		return phonenumber;
 	}
@@ -92,6 +93,12 @@ public class User implements Serializable {
 	}
 	public void setUserdate(Date userdate) {
 		this.userdate = userdate;
+	}
+	public Cart getCartdetails() {
+		return cartdetails;
+	}
+	public void setCartdetails(Cart cartdetails) {
+		this.cartdetails = cartdetails;
 	}
 	 
 	

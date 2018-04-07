@@ -105,7 +105,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 
-	public Coupons getcouponid(int id) {
+	public Coupons getcouponid(String id) {
 		
 		Session session=sessionF.openSession();
 		session.beginTransaction();
@@ -116,4 +116,17 @@ public class UserDaoImpl implements UserDao {
 		return coup;
 	}
 
+	public List<Coupons> check(String coupon){
+		
+		Session session=sessionF.openSession();
+		session.beginTransaction();
+		String queryString="from Coupons where couponid='"+coupon+"'" ;
+		
+		Query coupons =session.createQuery(queryString);
+		List<Coupons> list=coupons.list();
+		session.getTransaction().commit();
+		session.close();
+	
+		return list;
+	}
 }

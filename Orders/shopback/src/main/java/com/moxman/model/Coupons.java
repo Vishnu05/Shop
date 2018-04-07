@@ -14,13 +14,13 @@ public class Coupons {
 	@Id
 	@GeneratedValue
 	private int id;
-	
+
 	private String couponid;
-	
+
 	private String expirydate;
-	
+
 	private Date coupondate;
-	
+
 	private String percent;
 
 	public int getId() {
@@ -63,5 +63,4 @@ public class Coupons {
 		this.percent = percent;
 	}
 
-	 
 }
