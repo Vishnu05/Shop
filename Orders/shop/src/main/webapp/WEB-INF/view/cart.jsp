@@ -299,6 +299,7 @@ table>tbody>tr>td, .table>tfoot>tr>td {
 			 
 			 else{
 				 $("#coupon-status").text("Invalid coupon code");
+				 
 			 }
 				 
 			});
