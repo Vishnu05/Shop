@@ -888,6 +888,7 @@ fieldset[disabled] .btn-mokka.active {
                         <div class="col-md-12">
                           <!-- purple -->
                           <a href="adminorders" class="btn btn-purple btn-lg" role="button"><span class="glyphicon glyphicon-shopping-cart glyphsize black"></span> <br/>View<br />Orders</a>
+                            <a href="getorders?fromdate" class="btn btn-purple btn-lg" role="button"><span class="glyphicon glyphicon-shopping-cart glyphsize black"></span> <br/><br />Get Orders</a>
                         </div>
                     </div>
                  
