@@ -28,13 +28,13 @@
 		<br> <br>
 		<form action="getorders" method="get" >
 			<div class="col-md-4">
-				<label>FROM</label><br> <input   type="date"
+				<label>FROM</label><br> <input   type="datetime-local"
 					required="required" name = "fromdate ">
 <!-- i have no property like that ?  is this property should exists in table or dummy?wait asshole lol -->
 			</div>
 
 			<div class="col-md-4">
-				<label>TO</label><br> <input type="date"
+				<label>TO</label><br> <input type="datetime-local"
 					required="required" name="todate">
 			</div>
 

@@ -294,16 +294,17 @@ table>tbody>tr>td, .table>tfoot>tr>td {
 				var total = $(".total1").text();
 				console.log(total);
 				var discountamt = (total / 100) * discountPercent;
+				//var normaldiscount=(total - discountPercent);
 				$(".total1").text("Original amount: " + total + " Discounted amount: " + discountamt);
 			 }
 			 
 			 else{
-				 $("#coupon-status").text("Invalid coupon code");
-				 
+				 $("#coupon-status").text("Invalid coupon code");			 
 			 }
 				 
 			});
 		});
+		
 	</script>
 
 </body>

@@ -40,8 +40,33 @@ input[type=password]{
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    <script type="text/javascript">
+                    $(document).ready(function() {
+                        $("#userName").on("contextmenu",function(e){
+                           return false;
+                        }); {
+                        	$("#password").on("contextmenu",function(e){
+                        		return false;
+                        	});
+                        }
+                        {
+                        	$("#foo").on("contextmenu",function(e){
+                        		return false;
+                        	});
+                        }
+                    }); 
+                    
+                    
+                    $(document).ready(function(){
+                    	   $('#foo').on("cut copy paste inspect pagesource",function(e) {
+                    	      e.preventDefault();
+                    	   });
+                    	});
+                    </script>
+  
 </head>
-<body>
+<body id="foo">
 
 
  
@@ -64,11 +89,13 @@ input[type=password]{
                 <form id="login-form" action="perform_login" method="post" role="form" style="display: block;">
                   <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="email" name="username" id="userName" tabindex="1" class="form-control" placeholder="Username" value="" required>
+                    
+                  
+                    <input type="email" name="username" id="userName" tabindex="1" class="form-control" placeholder="Username" autocomplete="on" value="" required>
                   </div>
                   <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required>
+                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" autocomplete="off" required>
                   </div>
                  
                   <div class="form-group text-center">
